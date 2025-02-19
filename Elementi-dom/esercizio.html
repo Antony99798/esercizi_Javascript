@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="titolo">Titolo</h1>
+    <select name="" id="Genere">
+      <option value="Maschio">Maschio</option>
+      <option value="Femmina">Femmina</option>
+      <option value="Preferisco non specificare">
+        Preferisco non specificare
+      </option>
+    </select>
+    <div id="container"></div>
+    <script>
+      const titoli = ["Star-Wars", "Batman", "Avengers", "Venom", "Matrix"];
+      const products = [
+        {
+          name: "Laptop",
+          price: 1200,
+          category: "electronics",
+          discount: true,
+          discountPercent: 10,
+        },
+        {
+          name: "Smartphone",
+          price: 800,
+          category: "electronics",
+          discount: false,
+          discountPercent: 0,
+        },
+        {
+          name: "Headphones",
+          price: 150,
+          category: "electronics",
+          discount: true,
+          discountPercent: 15,
+        },
+        {
+          name: "T-shirt",
+          price: 20,
+          category: "clothing",
+          discount: false,
+          discountPercent: 0,
+        },
+        {
+          name: "Jeans",
+          price: 50,
+          category: "clothing",
+          discount: true,
+          discountPercent: 20,
+        },
+        {
+          name: "Coffee Maker",
+          price: 100,
+          category: "home",
+          discount: true,
+          discountPercent: 5,
+        },
+      ];
+      const id = document.getElementById("titolo");
+      function titolo(array) {
+        const intervallo = setInterval(() => {
+          const index = Math.floor(Math.random() * (array.length - 1));
+          id.textContent = array[index];
+        }, 500);
+        setTimeout(() => {
+          clearInterval(intervallo);
+          const paragrafo = document.createElement("p");
+          paragrafo.textContent = "Dovrai Guardare Questo Film";
+          document.body.appendChild(paragrafo);
+        }, 10000);
+      }
+      const select = document.getElementById("Genere");
+      console.log(select);
+
+      function aggiungiElementi(array) {
+        setTimeout(() => {
+          array.forEach((x) => {
+            const option = document.createElement("option");
+            option.textContent = x;
+            option.value = x;
+            select.appendChild(option);
+          });
+        }, 7000);
+      }
+      aggiungiElementi(titoli);
+      // titolo(titoli);
+      const container = document.getElementById("container");
+      container.style = "display:flex;";
+
+      products.forEach((prodotto) => {
+        const sconto = document.createElement("p");
+        const card = document.createElement("div");
+        const titolo = document.createElement("h6");
+        const prezzo = document.createElement("p");
+        const categoria = document.createElement("p");
+        titolo.textContent = prodotto.name;
+        prezzo.textContent = prodotto.price;
+        categoria.textContent = prodotto.category;
+
+        card.appendChild(titolo);
+        card.appendChild(categoria);
+        card.appendChild(prezzo);
+        if (prodotto.discount) {
+          sconto.textContent = `${prodotto.discountPercent}%`;
+          card.appendChild(sconto);
+          card.classList = "red";
+        }
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
