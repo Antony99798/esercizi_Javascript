@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style> 
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: white;
+  color: black;
+  padding: 20px;
+}
+
+/* Layout del contenitore */
+div {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 20px;
+}
+
+/* Stile delle card */
+ div > div {
+display: grid;
+grid-template-columns: 1fr;
+  background: rgb(103, 217, 103);
+  border-radius: 12px;
+  padding: 5px;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.descrizione {
+padding: 2px;
+font-size: 1.2em;
+
+}
+
+.categoria {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #ffffff;
+  background: #007bff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.data {
+  font-size: 1em;
+  font-weight: bold;
+  color: rgb(84, 13, 13);
+}
+
+/* Responsività */
+@media (max-width: 600px) {
+  div {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+  </head>
+  <body>
+    <script>
+      const articoli = [
+        {
+          titolo: "Nuove tendenze nel web design",
+          descrizione: "Scopri le ultime novità nel mondo del design.",
+          immagineUrl: "https://placehold.co/300x200",
+          categoria: "Design",
+          dataPubblicazione: "2022-05-15",
+        },
+        {
+          titolo: "Storia antica: segreti dei Romani",
+          descrizione: "Un viaggio nel tempo alla scoperta dell'antica Roma.",
+          immagineUrl: "https://placehold.co/300x200",
+          categoria: "Storia",
+          dataPubblicazione: "2018-11-20",
+        },
+        {
+          titolo: "Introduzione ad AstroFisica",
+          descrizione: "Comprendere le basi dell'universo.",
+          immagineUrl: "https://placehold.co/300x200",
+          categoria: "Scienza",
+          dataPubblicazione: "2021-02-10",
+        },
+        {
+          titolo: "Il Rinascimento del design italiano",
+          descrizione: "Esplora il rinascimento del design nel nostro paese.",
+          immagineUrl: "https://placehold.co/300x200",
+          categoria: "Design",
+          dataPubblicazione: "2019-07-05",
+        },
+        {
+          titolo: "Misteri della storia medievale",
+          descrizione: "Analisi degli eventi che hanno segnato il Medioevo.",
+          immagineUrl: "https://placehold.co/300x200",
+          categoria: "Storia",
+          dataPubblicazione: "2017-03-22",
+        },
+        {
+          titolo: "Innovazioni scientifiche del 21° secolo",
+          descrizione:
+            "Un sguardo alle scoperte che hanno rivoluzionato il nostro mondo.",
+          immagineUrl: "https://placehold.co/300x200",
+          categoria: "Scienza",
+          dataPubblicazione: "2023-01-12",
+        },
+      ];
+      const container = document.createElement("div");
+      document.body.appendChild(container);
+      articoli.forEach((articolo) => {
+        const card = document.createElement("div");
+        const titolo = document.createElement("h3");
+        titolo.textContent = articolo.titolo;
+        const descrizione = document.createElement("p");
+        descrizione.textContent = articolo.descrizione;
+        descrizione.setAttribute("class", "descrizione");
+        const immagine = document.createElement("img");
+        immagine.src = articolo.immagineUrl;
+        immagine.alt = articolo.titolo;
+        const categoria = document.createElement("p");
+        categoria.textContent = articolo.categoria;
+        categoria.setAttribute("class", "categoria");
+        const data = document.createElement("p");
+        data.textContent = articolo.dataPubblicazione;
+        data.setAttribute("class", "data");
+        card.appendChild(titolo);
+        card.appendChild(immagine);
+        card.appendChild(descrizione);
+        card.appendChild(categoria);
+        card.appendChild(data);
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
