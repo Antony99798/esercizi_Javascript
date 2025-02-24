@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ded85b;
+        }
+        .card {
+            background: rgb(103, 202, 17);
+            border-radius: 10px;
+            box-shadow: 4px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+        h2{
+            font-size: 30px;
+            font-weight: bold;
+            border: 2px solid blue;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            width: 80%;
+        }
+        p{
+            background-color: rgb(78, 78, 196);
+            font-size: 20px;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Pokémon</h2>
+        <img id="pokemon-image" src="" alt="Pokémon">
+        <p id="pokemon-info"></p>
+    </div>
+
+    <script>
+        async function recuperoDati(nome) {
+            try {
+                const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
+                const result = await data.json();
+                const types = result.types.map((x) => x.type.name);
+
+                document.getElementById('pokemon-image').src = result.sprites.front_default;
+                document.getElementById('pokemon-info').innerText = `Nome: ${result.name}\nTipo: ${types.join(", ")}`;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        recuperoDati("bulbasaur");
+    </script>
+</body>
+</html>

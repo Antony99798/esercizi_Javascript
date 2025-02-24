@@ -56,13 +56,19 @@ font-size: 1.2em;
 }
 
 .data {
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: bold;
   color: rgb(84, 13, 13);
 }
 
 /* Responsività */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  div {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 450px) {
   div {
     grid-template-columns: 1fr;
   }

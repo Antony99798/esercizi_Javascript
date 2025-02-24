@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    async function recuperoDati(nome) {
+  try {
+    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
+    const result = await data.json();
+    const types = result.types.map((x) => x.type.name);
+
+    return `Nome: ${result.name} Tipo: ${types.join(", ")}`;
+  } catch (error) {
+    console.error(error);
+  }
+}
+recuperoDati("bulbasaur").then((x) => console.log(x));
+</script>
+</body>
+</html>
