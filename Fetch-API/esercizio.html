@@ -1,24 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<script>
-    async function recuperoDati(nome) {
-  try {
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
-    const result = await data.json();
-    const types = result.types.map((x) => x.type.name);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon</title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        padding: 20px;
+        row-gap: 20px;
+      }
+      .card {
+        background-color: rgb(170, 217, 133);
+        max-width: 150px;
+        min-width: 100px;
+        max-height: 250px;
+        border: 10px solid rgba(182, 178, 178, 0.637);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        border: 5px solid rgba(182, 178, 178, 0.637);
+        border-radius: 10px;
+        background-color: rgba(217, 254, 208, 0.845);
+      }
+      h1 {
+        text-transform: capitalize;
+        font-size: 25px;
+        margin: 1px;
+        font-family: "Arial Narrow Bold", sans-serif;
+        color: rgb(97, 79, 79);
+      }
+      p {
+        font-style: oblique;
+        font-weight: 600;
+        color: rgb(12, 95, 237);
+        border: 2px solid;
+        padding: 3px;
+        border-radius: 10px;
+        max-width: 100px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      class="type"
+      id="type"
+      placeholder="questo è un placeholder"
+      value="grass"
+    />
+    <button id="btn-type">Cerca tipo</button>
+    <input
+      type="text"
+      class="pokemon"
+      id="pokemon"
+      placeholder="questo è un placeholder"
+      value="ditto"
+    />
 
-    return `Nome: ${result.name} Tipo: ${types.join(", ")}`;
-  } catch (error) {
-    console.error(error);
-  }
-}
-recuperoDati("bulbasaur").then((x) => console.log(x));
-</script>
-</body>
+    <button id="btn">Cerca</button>
+    <button id="btn-order">Ordina a-z</button>
+    <select id="sel"></select>
+    <div class="container"></div>
+
+    <script src="esercizio.js"></script>
+  </body>
 </html>
