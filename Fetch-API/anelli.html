@@ -4,18 +4,97 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style></style>
+    <style>
+      body {
+        display: flex;
+        flex-direction: row;
+        background-image: url("lordofring/tessoro.jpg");
+        background-position: center;
+      }
+
+      .container {
+        display: flex;
+        align-items: flex-start;
+        margin-top: 20px;
+        padding: 10px;
+      }
+
+      .card {
+        min-width: 100px;
+        min-height: 100px;
+        max-width: 600px;
+        max-height: 600px;
+        background-image: url("lordofring/sfondo.jpg");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 24px;
+        margin: 35px 0;
+        text-align: center;
+      }
+
+      img {
+        display: flex;
+        margin-left: 150px;
+        width: 100%;
+        height: auto;
+        border: 5px solid rgba(182, 178, 178, 0.637);
+        border-radius: 40px;
+        padding: 0;
+      }
+
+      p {
+        font-size: 15px;
+        display: flex;
+        margin-left: 150px;
+      }
+
+      /*input,
+      button {
+        /* position: relative;
+        left: 50%;
+        transform: translateX(-50%); Centra rispetto alla larghezza */
+
+      input {
+        background: rgb(31, 32, 35);
+        border: 1px solid rgb(60, 63, 68);
+        border-radius: 10px;
+        font-size: 15px;
+        color: rgb(247, 248, 248);
+        max-height: max-content;
+        padding: 10px;
+      }
+
+      button {
+        border: none;
+        color: white;
+        background: black;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        max-height: max-content;
+        padding: 8px;
+        margin-left: 10px;
+        margin-top: 3px;
+      }
+    </style>
   </head>
   <body>
-    
     <input
       type="text"
       class="search"
       placeholder="cerca personaggio"
       value="frodo baggins"
     />
-    <button id="cerca">cerca</button>
+    <button id="cerca">cerca il tuo tessoro</button>
     <div class="container"></div>
-    <script src="anelliss.js"></script>
+
+    <script src="anelli.js"></script>
   </body>
 </html>
